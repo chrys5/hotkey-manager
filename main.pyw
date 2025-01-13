@@ -12,7 +12,7 @@ from hotkeys import HOTKEYS
 
 PID_FILE = "running/running.txt"
 SCRIPT_PATH = os.path.realpath(sys.argv[0])
-ICO_FILE = "keyboard_k_6868.ico"
+ICO_FILE = "icon/keyboard_k_6868.ico"
 running = True
 
 # kill previous instance of this script
