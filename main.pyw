@@ -10,7 +10,6 @@ import psutil
 
 from hotkeys import HOTKEYS
 
-PID_FILE = "running/running.txt"
 SCRIPT_PATH = os.path.realpath(sys.argv[0])
 ICO_FILE = "icon/keyboard_k_6868.ico"
 running = True
@@ -77,10 +76,6 @@ def exit_program():
 
 def main():
     kill_previous_instance()
-
-    # write pid to file
-    with open(PID_FILE, "w") as f:
-        f.write(str(os.getpid()))
 
     for hotkey, function in HOTKEYS:
         keyboard.add_hotkey(hotkey, function)
