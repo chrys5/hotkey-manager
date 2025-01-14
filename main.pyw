@@ -46,13 +46,21 @@ def main_window():
     buttons_frame = tk.Frame(root)
     buttons_frame.pack(pady=10)
 
+    refresh_button = tk.Button(
+        buttons_frame,
+        text="↻",
+        font=("Arial", 12),
+        command=lambda: refresh_app(root)
+    )
+    refresh_button.grid(row=0, column=0, padx=5)
+
     open_hotkeys_button = tk.Button(
         buttons_frame,
         text="Open hotkeys.py in VS Code",
         font=("Arial", 12),
         command=lambda: subprocess.call("code hotkeys.py", shell=True)  #assume VS Code is installed and in PATH
     )
-    open_hotkeys_button.grid(row=0, column=0, padx=5)
+    open_hotkeys_button.grid(row=0, column=1, padx=5)
 
     exit_button = tk.Button(
         buttons_frame,
@@ -60,9 +68,13 @@ def main_window():
         font=("Arial", 12),
         command=lambda: close_app(root)
     )
-    exit_button.grid(row=0, column=1, padx=5)
+    exit_button.grid(row=0, column=2, padx=5)
 
     root.mainloop()
+
+def refresh_app(root: tk.Tk):
+    root.destroy() 
+    subprocess.Popen([sys.executable, SCRIPT_PATH])
 
 def close_app(root: tk.Tk):
     root.destroy()
